@@ -1,0 +1,24 @@
+<div class="alert-container mt-1 mx-1"> 
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+</div>
+
+<div class="booking-card p-3 my-2 card mx-auto mt-5 mb-1">
+
+  <%= render "booking_header", :flight => @booking.flight %>
+
+  <div>
+    <% @booking.passengers.each_with_index do |passenger, i| %>
+      <div class="m-2">
+        <div class="my-3 fw-bold"><%= "Passenger #{i + 1}" %></div>
+        <div class="my-3"><%= "Name: #{passenger.name}" %></div>
+        <div class="my-3"><%= "Email: #{passenger.email}" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="text-center">
+  <%= link_to "Search for more flights", flights_path%>
+</div>

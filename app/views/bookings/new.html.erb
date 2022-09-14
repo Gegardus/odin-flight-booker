@@ -1,0 +1,31 @@
+<div class="alert-container mt-1 mx-1"> 
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+</div>
+
+<div class="booking-card p-3 my-2 card mx-auto mt-5 mb-1">
+  <% if params[:flight_id] %>
+    <%= render "booking_header", :flight => Flight.find(params[:flight_id]) %>
+  <% end %>
+
+  <%= form_with model: @booking, class: "d-flex flex-column" do |booking_form| %>
+    <%= booking_form.hidden_field :flight_id, value: params[:flight_id] %>
+    <% params[:ticket_num].to_i.times do |i| %>
+      <div class="m-2 fw-bold">
+        <%= "Passenger #{i+1}" %>
+        <%= booking_form.fields_for :passengers, @booking.passengers.build do |passenger_form| %>
+          <%= passenger_form.label :name, hidden: true, class: "form-label" %>
+          <%= passenger_form.text_field :name, placeholder: "Name", class: "form-control my-3", required: true %>
+          <%= passenger_form.label :email, hidden: true, class: "form-label" %>
+          <%= passenger_form.email_field :email, placeholder: "Email", class: "form-control my-3", required: true %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= booking_form.submit "Confirm booking", class: "btn btn-success ml-1 flex-basis-1 m-2" %>
+  <% end %>
+</div>
+
+<div class="text-center">
+  <%= link_to "Back to flights", :back %>
+</div>
