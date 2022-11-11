@@ -10,7 +10,7 @@
     <h1 class="text-center text-danger">OdinFlights</h1>     
     <%= form_with url: @flights_path, method: :get, class: "gap-2 d-flex flex-column container-xs select-form flex-shrink-0" do |f| %>
 
-      <div class="align-self-center">
+      <div class="align-self-center mt-4">
         <%= f.label :departure_airport_id, hidden: true, class: "form-label" %>
         <%= f.collection_select :departure_airport_id, Airport.all, :id, :code, required: true, autofocus: true, autocomplete: "departure airport", prompt: "From", class: "form-select m-1 bg-primary" %>
 
@@ -25,7 +25,7 @@
 
         <%= hidden_field_tag :searching, true %>
       </div>
-      <%= f.submit "Search", class: "btn btn-primary" %>
+      <%= f.submit "Search", class: "btn btn-primary mx-4 px-2" %>
     <% end %>
      </div>
   </div>
@@ -42,7 +42,7 @@
       <% @flights.each do |flight| %>
         <div class="d-flex justify-content-center align-items-center flex-basis-1">
           <%= f.radio_button :flight_id, flight.id, class: "form-check-input", required: true %>
-          <div class="text-center d-flex justify-content-between container-sm p-3 flight-card rounded m-3">
+          <div class="text-center d-flex justify-content-between container-sm p-3 flight-card rounded m-3 bg-success text-white">
             <div>
               <div><%= flight.departure_hour %></div>
               <div><%= flight.departure_airport.code %></div>
@@ -58,9 +58,9 @@
           </div>
         </div>
       <% end %>
-      <%= f.submit "Book flight", class: "btn btn-primary booking-btn ml-1 mb-5" %>
+      <%= f.submit "Book flight", class: "btn btn-warning text-dark booking-btn ml-1 mb-5" %>
     <% end %>
   <% elsif params[:searching] %>
-    <p class="fw-light text-center">No available flights.</p>
+    <p class="text-info text-center">No available flights.</p>
   <% end %>
 </div>

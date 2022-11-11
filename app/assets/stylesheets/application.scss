@@ -14,3 +14,36 @@
  *= require_self
  */
  @import "bootstrap";
+
+ select {
+    height: 40px;
+   }
+  
+   .select-form,
+   .headers {
+     width: 460px;
+   }
+  
+   .booking-btn,
+   .flight-card {
+     width: 421px;
+   }
+  
+   .booking-btn {
+    position: relative;
+    left: 10px;
+   }
+  
+   .flight-card,
+   .booking-card {
+    background-color: lightgrey;
+   }
+  
+   .alert-container {
+    height: 90px;
+   }
+  
+   .booking-card {
+    max-width: 600px;
+   }
+   
