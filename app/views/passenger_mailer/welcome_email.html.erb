@@ -1,0 +1,31 @@
+<div class='title'>Odin Air</div>
+<p>
+  Thank you for booking Flight <%= @booking.flight_id %> with Odin Air! Please review your trip details below.
+</p>
+
+<p> 
+ <%= link_to 'View Booking', @url %>   
+</p>
+
+<table>
+  <thead>
+    <tr>     
+      <th>Departs</th>
+      <th>At</th> 
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @booking.flight.departure_date %> |</td>
+      <td> <%= @booking.flight.departure_hour %></td>     
+    </tr>
+  </tbody>
+</table>
+<br>
+Passengers:
+<ul>
+  <% @booking.passengers.each do |passenger| %>
+    <li><%= passenger.name %></li>
+  <% end %>
+</ul>
